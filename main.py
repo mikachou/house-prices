@@ -127,14 +127,14 @@ log_num_cols = [
 ]
 
 quad_num_cols = [
-    'OverallQual', 'YearBuilt', 'YearRemodAdd', 'TotalBsmtSF',
+    'OverallQual', 'YearBuilt', 'YearRemodAdd',
     '2ndFlrSF', 'GrLivArea',
 ]
 
 columns = ColumnTransformer(transformers = [
     ('scores_transform', EmbedTransformer(OrdinalEncoder(categories=len(scores_cat_cols) * [ord_scores], handle_unknown='use_encoded_value', unknown_value=-1)), scores_cat_cols),
     ('log_transform', FunctionTransformer(np.log1p), log_num_cols),
-    # ('quad_transform', PolynomialFeatures(degree=2), quad_num_cols),
+    ('quad_transform', EmbedTransformer(PolynomialFeatures(degree=2)), quad_num_cols),
     ('electrical', EmbedTransformer(OrdinalEncoder(categories=[['Mix', 'FuseP', 'FuseF', 'FuseA', 'SBrkr']])), ['Electrical']),
     ('central_air', EmbedTransformer(OrdinalEncoder(categories=[['N', 'Y']])), ['CentralAir']),
     ('garage_finish', EmbedTransformer(OrdinalEncoder(categories=[['NA', 'Unf', 'RFn', 'Fin']])), ['GarageFinish']),
