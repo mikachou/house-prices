@@ -4,6 +4,8 @@ import numpy as np
 from sklearn.compose import TransformedTargetRegressor
 from sklearn.linear_model import LinearRegression
 
+params = {}
+
 def model():
     """Define the model
 
