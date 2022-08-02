@@ -1,7 +1,14 @@
+import sys
+import importlib
 import numpy as np
 import pandas as pd
-from inc.preprocessor.preprocessor1 import preprocessor
-from inc.model.log_linear import model
+
+# import modules given CLI arguments
+pm = importlib.import_module('inc.preprocessor.' + sys.argv[1]) # e.g "preprocessor1"
+mm = importlib.import_module('inc.model.' + sys.argv[2]) # e.g "log_linear"
+
+preprocessor = getattr(pm, 'preprocessor')
+model = getattr(mm, 'model')
 
 # load datasets
 train = pd.read_csv('./data/train.csv')
