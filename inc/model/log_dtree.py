@@ -11,11 +11,5 @@ params = {
     'regressor__min_samples_leaf': IntLogUniformDistribution(5, 200),
 }
 
-def model():
-    """Define the model
-
-    Returns:
-        sklearn.compose.TransformedTargetRegressor: the model
-    """
-    return TransformedTargetRegressor(
+model = TransformedTargetRegressor(
         regressor=DecisionTreeRegressor(), func=np.log1p, inverse_func=np.expm1)

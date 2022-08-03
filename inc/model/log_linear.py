@@ -6,11 +6,5 @@ from sklearn.linear_model import LinearRegression
 
 params = {}
 
-def model():
-    """Define the model
-
-    Returns:
-        sklearn.compose.TransformedTargetRegressor: the model
-    """
-    return TransformedTargetRegressor(
+model = TransformedTargetRegressor(
         regressor=LinearRegression(), func=np.log1p, inverse_func=np.expm1)
