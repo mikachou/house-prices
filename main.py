@@ -38,4 +38,4 @@ submission = pd.DataFrame({'Id': test.Id, 'SalePrice': y_pred})
 m = submission.loc[submission['SalePrice'] != np.inf, 'SalePrice'].max()
 submission['SalePrice'].replace(np.inf,m,inplace=True)
 
-submission.to_csv(index=False)
+submission.to_csv('submissions/submission.csv', index=False)
