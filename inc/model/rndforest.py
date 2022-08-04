@@ -1,4 +1,4 @@
-"""Provide decision tree regression
+"""Provide Random Forest
 """
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
