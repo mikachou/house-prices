@@ -8,11 +8,16 @@ from optuna.distributions import \
     UniformDistribution, LogUniformDistribution
 
 params = {
-    'regressor__iterations': IntUniformDistribution(100, 200),
-    'regressor__learning_rate': LogUniformDistribution(0.03, 0.1),
-    'regressor__depth': IntUniformDistribution(2, 8),
-    'regressor__l2_leaf_reg': LogUniformDistribution(0.2, 3)
+    'regressor__n_estimators': IntUniformDistribution(100, 1000),
+    'regressor__learning_rate': LogUniformDistribution(1e-3, 1e-1),
+    'regressor__l2_leaf_reg': LogUniformDistribution(1e-4, 1e-1),
+    'regressor__colsample_bylevel': UniformDistribution(0.1, 1.0),
+    'regressor__subsample': UniformDistribution(0.1, 1.0),
+    'regressor__max_depth': IntUniformDistribution(1, 8),
+    'regressor__min_data_in_leaf': IntUniformDistribution(1, 300),
 }
 
 model = TransformedTargetRegressor(
-        regressor=CatBoostRegressor(), func=np.log1p, inverse_func=np.expm1)
+    regressor=CatBoostRegressor(silent=True, thread_count=1),
+    func=np.log1p,
+    inverse_func=np.expm1)
