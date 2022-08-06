@@ -19,6 +19,6 @@ def search_cv(X, y, model, param_distributions={}, random_state=314,
     search_cv.fit(X, y.values.ravel())
     end = time.time()
 
-    print('time:', end - start, 'ms')
+    print('time:', end - start, 'seconds')
 
     return search_cv
