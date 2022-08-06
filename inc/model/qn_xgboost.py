@@ -1,11 +1,17 @@
-"""Provide log xgboost regression
+"""Provide quantile-normal xgboost regression
 """
-import numpy as np
-from xgboost import XGBRegressor
+import pandas as pd
+from sklearn.preprocessing import QuantileTransformer
 from sklearn.compose import TransformedTargetRegressor
+from xgboost import XGBRegressor
 from optuna.distributions import \
     CategoricalDistribution, IntUniformDistribution, \
     UniformDistribution, LogUniformDistribution
+
+train = pd.read_csv('./data/train.csv')
+
+tr = QuantileTransformer(output_distribution='normal')
+tr.fit(train['SalePrice'].values.reshape(-1, 1))
 
 params = {
     'regressor__n_estimators': IntUniformDistribution(50, 500),
@@ -19,4 +25,5 @@ params = {
 }
 
 model = TransformedTargetRegressor(
-    regressor=XGBRegressor(), func=np.log1p, inverse_func=np.expm1)
+    regressor=XGBRegressor(),
+    func=tr.transform, inverse_func=tr.inverse_transform)

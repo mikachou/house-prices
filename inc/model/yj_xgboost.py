@@ -1,11 +1,17 @@
-"""Provide log xgboost regression
+"""Provide yeo-johnson xgboost regression
 """
-import numpy as np
-from xgboost import XGBRegressor
+import pandas as pd
+from sklearn.preprocessing import PowerTransformer
 from sklearn.compose import TransformedTargetRegressor
+from xgboost import XGBRegressor
 from optuna.distributions import \
     CategoricalDistribution, IntUniformDistribution, \
     UniformDistribution, LogUniformDistribution
+
+train = pd.read_csv('./data/train.csv')
+
+tr = PowerTransformer(method='yeo-johnson')
+tr.fit(train['SalePrice'].values.reshape(-1, 1))
 
 params = {
     'regressor__n_estimators': IntUniformDistribution(50, 500),
@@ -19,4 +25,5 @@ params = {
 }
 
 model = TransformedTargetRegressor(
-    regressor=XGBRegressor(), func=np.log1p, inverse_func=np.expm1)
+    regressor=XGBRegressor(),
+    func=tr.transform, inverse_func=tr.inverse_transform)

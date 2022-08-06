@@ -1,4 +1,4 @@
-"""Provide catboost regression
+"""Provide xgboost regression
 """
 from xgboost import XGBRegressor
 from optuna.distributions import \
