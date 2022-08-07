@@ -3,6 +3,7 @@ import importlib
 import numpy as np
 import pandas as pd
 from inc.search import search_cv
+from inc.preprocessor.common.outliers import remove_outliers
 
 # import modules given CLI arguments
 pmod = importlib.import_module('inc.preprocessor.' + sys.argv[1]) # e.g "preprocessor1"
@@ -15,6 +16,11 @@ params = getattr(mmod, 'params')
 # load datasets
 train = pd.read_csv('./data/train.csv')
 test = pd.read_csv('./data/test.csv')
+
+# remove outliers
+print(train.shape)
+train = remove_outliers(train)
+print(train.shape)
 
 pre = preprocessor(train, test)
 
