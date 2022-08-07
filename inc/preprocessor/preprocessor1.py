@@ -5,7 +5,7 @@ Provide feature preprocessor pipeline
 import numpy as np
 from sklearn.preprocessing import \
     OrdinalEncoder, PolynomialFeatures, OneHotEncoder, FunctionTransformer
-from sklearn.impute import SimpleImputer
+from sklearn.impute import KNNImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from inc.preprocessor.common.util \
@@ -71,7 +71,7 @@ def preprocessor(train, test):
         ('bool_features', DataframeFunctionTransformer(bool_features)),
         ('columns', columns),
         ('to_dense', DenseTransformer()),
-        ('impute', SimpleImputer(strategy='mean')), # actually only LotFrontage remaining
+        ('impute', KNNImputer()), # actually only LotFrontage remaining
     ])
 
     return pre
