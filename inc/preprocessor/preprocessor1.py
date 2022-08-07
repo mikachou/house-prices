@@ -8,7 +8,8 @@ from sklearn.preprocessing import \
 from sklearn.impute import KNNImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
-from inc.preprocessor.common import * # pylint: disable=wildcard-import, unused-wildcard-import
+from inc.preprocessor.common.util \
+    import * # pylint: disable=wildcard-import, unused-wildcard-import
 
 def preprocessor(train, test):
     """Provide features preprocessor pipeline
