@@ -5,13 +5,13 @@ from optuna.distributions import IntUniformDistribution, UniformDistribution
 
 params = {
     'learning_rate': UniformDistribution(1e-3, 1.0),
-    'n_estimators': IntUniformDistribution(50, 500),
+    'n_estimators': IntUniformDistribution(50, 1000),
     'subsample': UniformDistribution(0.1, 1.0),
-    'max_depth': IntUniformDistribution(3, 300),
+    'max_depth': IntUniformDistribution(3, 1500),
     'min_samples_split': IntUniformDistribution(3, 300),
     'min_samples_leaf': IntUniformDistribution(3, 300),
     'max_features': UniformDistribution(0.1, 1.0),
-    'max_leaf_nodes': IntUniformDistribution(3, 300),
+    'max_leaf_nodes': IntUniformDistribution(3, 1000),
 }
 
 model = GradientBoostingRegressor()

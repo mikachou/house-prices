@@ -7,9 +7,9 @@ from optuna.distributions import IntUniformDistribution, UniformDistribution
 
 params = {
     'regressor__learning_rate': UniformDistribution(1e-3, 1.0),
-    'regressor__n_estimators': IntUniformDistribution(50, 1500),
+    'regressor__n_estimators': IntUniformDistribution(50, 1000),
     'regressor__subsample': UniformDistribution(0.1, 1.0),
-    'regressor__max_depth': IntUniformDistribution(3, 1500),
+    'regressor__max_depth': IntUniformDistribution(3, 1000),
     'regressor__min_samples_split': IntUniformDistribution(3, 1000),
     'regressor__min_samples_leaf': IntUniformDistribution(3, 1000),
     'regressor__max_features': UniformDistribution(0.1, 1.0),
