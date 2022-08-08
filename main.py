@@ -1,4 +1,5 @@
 import sys
+from datetime import datetime
 import importlib
 import numpy as np
 import pandas as pd
@@ -35,6 +36,8 @@ n_trials = int(sys.argv[4]) if len(sys.argv) > 4 else 1
 scv = search_cv(X_train, y_train, model, params, n_trials=n_trials)
 # reg.fit(X_train, y_train)
 
+print(scv.best_params_)
+
 X_test = pre.transform(test.drop('Id', axis=1))
 print(X_test.shape)
 y_pred = scv.predict(X_test)
@@ -46,3 +49,15 @@ m = submission.loc[submission['SalePrice'] != np.inf, 'SalePrice'].max()
 submission['SalePrice'].replace(np.inf,m,inplace=True)
 
 submission.to_csv('submissions/submission.csv', index=False)
+
+# log parameters
+log_name = 'logs/' + datetime.now().strftime('%Y-%m-%d_%H-%M-%S.log')
+with open(log_name, 'w', encoding='utf8') as log:
+    log.writelines([
+        f'outliers: {sys.argv[1]}\n',
+        f'preprocessor: {sys.argv[2]}\n',
+        f'model: {sys.argv[3]}\n',
+        f'trials: {sys.argv[4]}\n',
+        f'best params: {scv.best_params_}\n',
+        f'score: {scv.best_score_}\n',
+    ])
