@@ -4,7 +4,8 @@ Provide feature preprocessor pipeline
 
 import numpy as np
 from sklearn.preprocessing import \
-    OrdinalEncoder, PolynomialFeatures, OneHotEncoder, FunctionTransformer
+    OrdinalEncoder, PolynomialFeatures, OneHotEncoder, FunctionTransformer, \
+    StandardScaler
 from sklearn.impute import KNNImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
@@ -71,6 +72,7 @@ def common_preprocessor(train, test):
         ('bool_features', DataframeFunctionTransformer(bool_features)),
         ('columns', columns),
         ('to_dense', DenseTransformer()),
+        ('standard', StandardScaler()),
     ])
 
     return pre
