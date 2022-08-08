@@ -1,10 +1,16 @@
-"""Provide log Random Forest
+"""Provide box-cox Random Forest
 """
-import numpy as np
+import pandas as pd
+from sklearn.preprocessing import PowerTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.compose import TransformedTargetRegressor
 from optuna.distributions import \
     CategoricalDistribution, IntUniformDistribution, UniformDistribution
+
+train = pd.read_csv('./data/train.csv')
+
+tr = PowerTransformer(method='box-cox')
+tr.fit(train['SalePrice'].values.reshape(-1, 1))
 
 params = {
     'regressor__n_estimators': IntUniformDistribution(100, 1000),
@@ -17,4 +23,5 @@ params = {
 }
 
 model = TransformedTargetRegressor(
-        regressor=RandomForestRegressor(), func=np.log1p, inverse_func=np.expm1)
+    regressor=RandomForestRegressor(),
+    func=tr.transform, inverse_func=tr.inverse_transform)
