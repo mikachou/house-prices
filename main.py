@@ -3,12 +3,13 @@ import importlib
 import numpy as np
 import pandas as pd
 from inc.search import search_cv
-from inc.preprocessor.common.outliers import remove_outliers
 
 # import modules given CLI arguments
-pmod = importlib.import_module('inc.preprocessor.' + sys.argv[1]) # e.g "preprocessor1"
-mmod = importlib.import_module('inc.model.' + sys.argv[2]) # e.g "log_linear"
+omod = importlib.import_module('inc.outliers.' + sys.argv[1]) # e.g "outliers0"
+pmod = importlib.import_module('inc.preprocessor.' + sys.argv[2]) # e.g "preprocessor1"
+mmod = importlib.import_module('inc.model.' + sys.argv[3]) # e.g "log_linear"
 
+remove_outliers = getattr(omod, 'remove_outliers')
 preprocessor = getattr(pmod, 'preprocessor')
 model = getattr(mmod, 'model')
 params = getattr(mmod, 'params')
@@ -28,7 +29,7 @@ X_train = pre.fit_transform(train.drop(['Id', 'SalePrice'], axis=1))
 print(X_train.shape)
 y_train = train['SalePrice']
 
-n_trials = int(sys.argv[3]) if len(sys.argv) > 3 else 1
+n_trials = int(sys.argv[4]) if len(sys.argv) > 4 else 1
 
 # search for optimal hypermarameters
 scv = search_cv(X_train, y_train, model, params, n_trials=n_trials)
