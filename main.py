@@ -36,7 +36,7 @@ y_train = train['SalePrice']
 n_trials = int(sys.argv[4]) if len(sys.argv) > 4 else 1
 
 # search for optimal hypermarameters
-scv = search_cv(X_train, y_train, model, params, n_trials=n_trials)
+scv, time = search_cv(X_train, y_train, model, params, n_trials=n_trials)
 # reg.fit(X_train, y_train)
 
 print(scv.best_params_)
@@ -51,10 +51,12 @@ submission = pd.DataFrame({'Id': test.Id, 'SalePrice': y_pred})
 m = submission.loc[submission['SalePrice'] != np.inf, 'SalePrice'].max()
 submission['SalePrice'].replace(np.inf,m,inplace=True)
 
-submission.to_csv('submissions/submission.csv', index=False)
+base_name = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+
+submission.to_csv(f'submissions/{base_name}.csv', index=False)
 
 # log parameters
-log_name = 'logs/' + datetime.now().strftime('%Y-%m-%d_%H-%M-%S.log')
+log_name = 'logs/' + base_name + '.log'
 with open(log_name, 'w', encoding='utf8') as log:
     log.writelines([
         f'outliers: {sys.argv[1]}\n',
@@ -63,4 +65,5 @@ with open(log_name, 'w', encoding='utf8') as log:
         f'trials: {sys.argv[4]}\n',
         f'best params: {scv.best_params_}\n',
         f'score: {scv.best_score_}\n',
+        f'time: {time}\n',
     ])
