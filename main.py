@@ -5,6 +5,9 @@ import numpy as np
 import pandas as pd
 from inc.search import search_cv
 
+# initialise numpy random seed
+np.random.seed(314)
+
 # import modules given CLI arguments
 omod = importlib.import_module('inc.outliers.' + sys.argv[1]) # e.g "outliers0"
 pmod = importlib.import_module('inc.preprocessor.' + sys.argv[2]) # e.g "preprocessor1"

@@ -1,7 +1,7 @@
 import time
 from optuna.integration import OptunaSearchCV
 
-def search_cv(X, y, model, param_distributions={}, random_state=314,
+def search_cv(X, y, model, param_distributions={}, random_state=None,
     n_splits=5, n_jobs=-1, n_trials=10, scoring='neg_mean_squared_log_error'):
     search_args = {
         'estimator': model,
