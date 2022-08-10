@@ -21,4 +21,4 @@ def search_cv(X, y, model, param_distributions={}, random_state=None,
 
     print('time:', end - start, 'seconds')
 
-    return search_cv
+    return search_cv, end - start
