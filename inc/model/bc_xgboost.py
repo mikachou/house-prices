@@ -14,7 +14,7 @@ tr = PowerTransformer(method='box-cox')
 tr.fit(train['SalePrice'].values.reshape(-1, 1))
 
 params = {
-    'regressor__n_estimators': IntUniformDistribution(50, 500),
+    # 'regressor__n_estimators': IntUniformDistribution(50, 500),
     'regressor__max_depth': IntUniformDistribution(3, 1000),
     'regressor__max_leaves': IntUniformDistribution(3, 1500),
     'regressor__learning_rate': LogUniformDistribution(1e-4, 1e-1),
@@ -25,5 +25,5 @@ params = {
 }
 
 model = TransformedTargetRegressor(
-    regressor=XGBRegressor(),
+    regressor=XGBRegressor(n_estimators=1000),
     func=tr.transform, inverse_func=tr.inverse_transform)

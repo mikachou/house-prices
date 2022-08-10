@@ -8,7 +8,7 @@ from optuna.distributions import \
     UniformDistribution, LogUniformDistribution
 
 params = {
-    'regressor__n_estimators': IntUniformDistribution(50, 500),
+    # 'regressor__n_estimators': IntUniformDistribution(50, 500),
     'regressor__max_depth': IntUniformDistribution(3, 1000),
     'regressor__max_leaves': IntUniformDistribution(3, 1500),
     'regressor__learning_rate': LogUniformDistribution(1e-4, 1e-1),
@@ -19,4 +19,5 @@ params = {
 }
 
 model = TransformedTargetRegressor(
-    regressor=XGBRegressor(), func=np.log1p, inverse_func=np.expm1)
+    regressor=XGBRegressor(n_estimators=1000),
+    func=np.log1p, inverse_func=np.expm1)
