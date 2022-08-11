@@ -6,7 +6,7 @@ from optuna.distributions import \
     UniformDistribution, LogUniformDistribution
 
 # bc_catboost
-# log_xgboost
+# bc_xgboost
 # bc_mlp
 # log_svm
 # log_lasso

@@ -6,7 +6,7 @@ from optuna.distributions import \
     UniformDistribution, LogUniformDistribution
 
 # bc_catboost
-# log_xgboost
+# bc_xgboost
 # bc_mlp
 # log_svm
 # log_lasso
@@ -18,5 +18,5 @@ model = StackingRegressor(
 
 params = {
     'final_estimator__l1_ratio': UniformDistribution(0.0, 1.0),
-    'final_estimator__eps': LogUniformDistribution(1e-5, 1e0),
+    'final_estimator__eps': LogUniformDistribution(1e-6, 1e-3),
 }
