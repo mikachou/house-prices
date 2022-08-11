@@ -1,3 +1,5 @@
+"""Provides stacking regressor
+"""
 from sklearn.ensemble import StackingRegressor
 from sklearn.linear_model import LinearRegression
 from inc.model.base import stack3

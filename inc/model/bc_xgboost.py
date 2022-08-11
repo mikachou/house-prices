@@ -5,8 +5,7 @@ from sklearn.preprocessing import PowerTransformer
 from sklearn.compose import TransformedTargetRegressor
 from xgboost import XGBRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+    IntUniformDistribution, UniformDistribution, LogUniformDistribution
 
 train = pd.read_csv('./data/train.csv')
 

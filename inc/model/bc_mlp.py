@@ -4,8 +4,8 @@ import pandas as pd
 from sklearn.preprocessing import PowerTransformer
 from sklearn.neural_network import MLPRegressor
 from sklearn.compose import TransformedTargetRegressor
-from optuna.distributions import IntUniformDistribution, \
-    UniformDistribution, CategoricalDistribution, LogUniformDistribution
+from optuna.distributions import \
+    CategoricalDistribution, LogUniformDistribution
 
 train = pd.read_csv('./data/train.csv')
 

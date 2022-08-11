@@ -1,9 +1,8 @@
 """Provide Random Forest
 """
-import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, UniformDistribution
+    IntUniformDistribution, UniformDistribution
 
 params = {
     'n_estimators': IntUniformDistribution(100, 1000),

@@ -3,10 +3,9 @@
 import numpy as np
 from sklearn.compose import TransformedTargetRegressor
 from sklearn.linear_model import Lasso
-from optuna.distributions import \
-    UniformDistribution, LogUniformDistribution, IntUniformDistribution
+from optuna.distributions import LogUniformDistribution
 # import warnings
-# warnings.filterwarnings('ignore') 
+# warnings.filterwarnings('ignore')
 
 params = {
     'regressor__alpha': LogUniformDistribution(1e-6, 1e3),

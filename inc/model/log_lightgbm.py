@@ -4,8 +4,7 @@ import numpy as np
 from lightgbm import LGBMRegressor
 from sklearn.compose import TransformedTargetRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+    IntUniformDistribution, UniformDistribution, LogUniformDistribution
 
 params = {
     'regressor__n_estimators': IntUniformDistribution(50, 500),

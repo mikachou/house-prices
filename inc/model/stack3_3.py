@@ -1,9 +1,10 @@
-from inc.model.base import stack3
+"""Stacking regressor model
+"""
 from sklearn.ensemble import StackingRegressor
 from xgboost import XGBRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+    IntUniformDistribution, UniformDistribution, LogUniformDistribution
+from inc.model.base import stack3
 
 # bc_catboost
 # bc_xgboost

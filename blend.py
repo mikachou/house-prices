@@ -1,17 +1,13 @@
 """Dummy blend without cross-validation
 """
-import sys
 from datetime import datetime
-import importlib
 import numpy as np
 import pandas as pd
-from inc.search import search_cv
-from inc.outliers.outliers1 import remove_outliers
-from inc.preprocessor.preprocessor1 import preprocessor
+from xgboost import XGBRegressor
 from sklearn.linear_model import ElasticNetCV, LinearRegression
 from sklearn.ensemble import StackingRegressor
-from sklearn.model_selection import KFold
-from xgboost import XGBRegressor
+from inc.outliers.outliers1 import remove_outliers
+from inc.preprocessor.preprocessor1 import preprocessor
 from inc.model.base import stack3
 
 # initialise numpy random seed

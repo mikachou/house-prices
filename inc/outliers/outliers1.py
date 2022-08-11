@@ -13,7 +13,7 @@ def remove_outliers(train):
     ids = [
         692, 1183,  # SalePrice > 700000
         935,        # LotFrontage > 300
-        1299,       # BsmtFinSF1 > 4000, TotalBsmtSF > 6000, 
+        1299,       # BsmtFinSF1 > 4000, TotalBsmtSF > 6000,
                     # 1stFlrSF > 4000, GrLivArea > 5000
         323,        # BsmtFinSF2 > 1400
         198,        # EnclosedPorch > 400

@@ -4,10 +4,9 @@ import pandas as pd
 from sklearn.preprocessing import PowerTransformer
 from sklearn.compose import TransformedTargetRegressor
 from sklearn.svm import SVR
-from optuna.distributions import \
-    UniformDistribution, LogUniformDistribution, IntUniformDistribution
+from optuna.distributions import LogUniformDistribution
 # import warnings
-# warnings.filterwarnings('ignore') 
+# warnings.filterwarnings('ignore')
 
 train = pd.read_csv('./data/train.csv')
 

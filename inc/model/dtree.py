@@ -1,6 +1,5 @@
 """Provide decision tree regression
 """
-import numpy as np
 from sklearn.tree import DecisionTreeRegressor
 from optuna.distributions import IntLogUniformDistribution
 

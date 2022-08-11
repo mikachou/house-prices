@@ -2,8 +2,7 @@
 """
 from lightgbm import LGBMRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+    IntUniformDistribution, UniformDistribution, LogUniformDistribution
 
 params = {
     'n_estimators': IntUniformDistribution(50, 500),

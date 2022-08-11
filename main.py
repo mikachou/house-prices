@@ -1,3 +1,5 @@
+"""main scripts
+"""
 import sys
 from datetime import datetime
 import importlib
@@ -33,7 +35,7 @@ X_train = pre.fit_transform(train.drop(['Id', 'SalePrice'], axis=1))
 print(X_train.shape)
 y_train = train['SalePrice']
 
-n_trials = int(sys.argv[4]) if len(sys.argv) > 4 else 1
+n_trials = int(sys.argv[4]) if len(sys.argv) > 4 else 1 # pylint: disable=invalid-name
 
 # search for optimal hypermarameters
 scv, time = search_cv(X_train, y_train, model, params, n_trials=n_trials)

@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.compose import TransformedTargetRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, UniformDistribution
+    IntUniformDistribution, UniformDistribution
 
 params = {
     'regressor__n_estimators': IntUniformDistribution(100, 1000),

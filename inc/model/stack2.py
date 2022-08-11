@@ -1,3 +1,5 @@
+"""Stacking regressor model
+"""
 import numpy as np
 import pandas as pd
 from catboost import CatBoostRegressor
@@ -7,9 +9,6 @@ from sklearn.linear_model import Lasso
 from sklearn.preprocessing import PowerTransformer
 from sklearn.compose import TransformedTargetRegressor
 from sklearn.ensemble import StackingRegressor
-from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
 
 train = pd.read_csv('./data/train.csv')
 

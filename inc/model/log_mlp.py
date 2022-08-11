@@ -3,8 +3,8 @@
 import numpy as np
 from sklearn.neural_network import MLPRegressor
 from sklearn.compose import TransformedTargetRegressor
-from optuna.distributions import IntUniformDistribution, \
-    UniformDistribution, CategoricalDistribution, LogUniformDistribution
+from optuna.distributions import \
+    CategoricalDistribution, LogUniformDistribution
 
 params = {
     'regressor__hidden_layer_sizes': CategoricalDistribution([

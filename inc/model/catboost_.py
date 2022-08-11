@@ -2,8 +2,7 @@
 """
 from catboost import CatBoostRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+    IntUniformDistribution, UniformDistribution, LogUniformDistribution
 
 params = {
     'n_estimators': IntUniformDistribution(100, 1000),

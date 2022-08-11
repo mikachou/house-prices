@@ -1,3 +1,8 @@
+"""base estimator for all stack3 stacking regression models
+
+Returns:
+    list: list of tuples containing stacked models
+"""
 import numpy as np
 import pandas as pd
 from catboost import CatBoostRegressor
@@ -20,7 +25,11 @@ tr = PowerTransformer(method='box-cox')
 tr.fit(train['SalePrice'].values.reshape(-1, 1))
 
 def get_estimators():
+    """base estimators for all stack3 stacking regression models
 
+    Returns:
+        list: list of tuples containing stacked models
+    """
     bc_catboost = TransformedTargetRegressor(
         regressor=CatBoostRegressor(
             silent=True, thread_count=1, n_estimators=1000, **{

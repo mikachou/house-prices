@@ -5,7 +5,7 @@ from sklearn.preprocessing import PowerTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.compose import TransformedTargetRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, UniformDistribution
+    IntUniformDistribution, UniformDistribution
 
 train = pd.read_csv('./data/train.csv')
 

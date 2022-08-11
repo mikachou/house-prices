@@ -1,12 +1,13 @@
 """Provide log transformed linear regression
 """
+import warnings
 import numpy as np
 from sklearn.compose import TransformedTargetRegressor
 from sklearn.linear_model import LassoLars
 from optuna.distributions import \
     UniformDistribution, LogUniformDistribution, IntUniformDistribution
-import warnings
-warnings.filterwarnings('ignore') 
+
+warnings.filterwarnings('ignore')
 
 params = {
     'regressor__alpha': UniformDistribution(0.1, 2.0),

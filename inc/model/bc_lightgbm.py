@@ -2,11 +2,10 @@
 """
 import pandas as pd
 from sklearn.preprocessing import PowerTransformer
-from lightgbm import LGBMRegressor
 from sklearn.compose import TransformedTargetRegressor
+from lightgbm import LGBMRegressor
 from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+    IntUniformDistribution, UniformDistribution, LogUniformDistribution
 
 train = pd.read_csv('./data/train.csv')
 

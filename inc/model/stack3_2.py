@@ -1,11 +1,11 @@
+"""Stacking regressor model
+"""
 import numpy as np
-from inc.model.base import stack3
 from sklearn.ensemble import StackingRegressor
 from sklearn.linear_model import ElasticNetCV
 from sklearn.compose import TransformedTargetRegressor
-from optuna.distributions import \
-    CategoricalDistribution, IntUniformDistribution, \
-    UniformDistribution, LogUniformDistribution
+from optuna.distributions import UniformDistribution, LogUniformDistribution
+from inc.model.base import stack3
 
 # bc_catboost
 # bc_xgboost

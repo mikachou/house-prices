@@ -6,7 +6,6 @@ import numpy as np
 from sklearn.preprocessing import \
     OrdinalEncoder, PolynomialFeatures, OneHotEncoder, FunctionTransformer, \
     StandardScaler
-from sklearn.impute import KNNImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from inc.preprocessor.common.util \
