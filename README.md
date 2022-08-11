@@ -97,7 +97,7 @@ $ python eda_transformer.py
 To display outliers from train set type the following command :
 
 ```
-$ python eda_outliers
+$ python eda_outliers.py
 ```
 
 ### Modelisation
