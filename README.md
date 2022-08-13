@@ -40,6 +40,11 @@ $ python -V
 Python 3.7.12
 ```
 
+In case right python version is not intall, type the following command
+```
+$ pyenv install
+```
+
 Create a virtualenv for this project
 
 ```
