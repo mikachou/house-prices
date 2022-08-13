@@ -16,6 +16,7 @@ tr.fit(train['SalePrice'].values.reshape(-1, 1))
 params = {
     'regressor__C': LogUniformDistribution(1e-3, 1e3),
     'regressor__gamma': LogUniformDistribution(1e-6, 1e3),
+    'regressor__epsilon': LogUniformDistribution(1e-3, 1e0),
 }
 
 model = TransformedTargetRegressor(
