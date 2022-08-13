@@ -131,3 +131,10 @@ Aside stacking and blending models (see `inc/model/stack*` files) there is a dum
 $ python blend.py
 ```
 A submission file is generated in `submissions/` but result is not that good.
+
+## Final considerations
+
+For this project we recommand to use stack models that give better results. For instance :
+```
+$ python main.py outliers1 preprocessor1 stack_3_1 32
+```
